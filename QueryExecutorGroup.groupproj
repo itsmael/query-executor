@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3DF8B28A-74DF-4EAE-B810-E238ADBBCAA6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="QueryExecutor.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="QueryExecutor">
+        <MSBuild Projects="QueryExecutor.dproj"/>
+    </Target>
+    <Target Name="QueryExecutor:Clean">
+        <MSBuild Projects="QueryExecutor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="QueryExecutor:Make">
+        <MSBuild Projects="QueryExecutor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="QueryExecutor"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="QueryExecutor:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="QueryExecutor:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
